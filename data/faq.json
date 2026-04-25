@@ -1,0 +1,733 @@
+[
+  {
+    "intent": "operating_system",
+    "category": "Operating Systems",
+    "keywords": ["operating system", "os", "what is os", "what is operating system", "define os"],
+    "responses": {
+      "short": "An Operating System is system software that manages hardware and software resources, providing services for computer programs.",
+      "points": [
+        "Acts as an interface between the user and hardware (e.g., Windows, Linux)",
+        "Manages CPU scheduling, memory allocation, and file systems",
+        "Provides security, I/O management, and process control"
+      ],
+      "examples": [
+        "Windows 11 manages your apps, files, and RAM on a laptop",
+        "Linux (Ubuntu) runs servers and handles multi-user access simultaneously"
+      ]
+    }
+  },
+  {
+    "intent": "process_vs_thread",
+    "category": "Operating Systems",
+    "keywords": ["process vs thread", "process and thread", "thread vs process", "difference between process and thread"],
+    "responses": {
+      "short": "A process is an independent program in execution with its own memory space. A thread is the smallest unit of execution within a process, sharing memory with other threads.",
+      "points": [
+        "Processes are isolated; threads within a process share memory and resources",
+        "Context switching between processes is slower than between threads",
+        "A single process can have multiple threads (multithreading)"
+      ],
+      "examples": [
+        "Google Chrome opens each tab as a separate process for crash isolation",
+        "A web server uses multiple threads to handle many HTTP requests concurrently"
+      ]
+    }
+  },
+  {
+    "intent": "deadlock",
+    "category": "Operating Systems",
+    "keywords": ["deadlock", "what is deadlock", "deadlock in os", "deadlock conditions"],
+    "responses": {
+      "short": "A deadlock is a situation where two or more processes are stuck waiting for each other to release resources, causing all of them to halt indefinitely.",
+      "points": [
+        "Four necessary conditions: Mutual Exclusion, Hold & Wait, No Preemption, Circular Wait",
+        "Can be prevented by breaking one of the four conditions (e.g., resource ordering)",
+        "Detected using Resource Allocation Graphs and resolved by process termination or rollback"
+      ],
+      "examples": [
+        "Process A holds a printer and waits for a scanner; Process B holds a scanner and waits for a printer",
+        "Two trains on a single track waiting for each other to move — neither can proceed"
+      ]
+    }
+  },
+  {
+    "intent": "paging",
+    "category": "Operating Systems",
+    "keywords": ["paging", "what is paging", "memory paging", "page table"],
+    "responses": {
+      "short": "Paging is a memory management technique that divides physical memory into fixed-size blocks (frames) and logical memory into same-size blocks (pages), eliminating external fragmentation.",
+      "points": [
+        "Logical address = Page Number + Offset; mapped to physical frame via page table",
+        "Eliminates external fragmentation but can cause internal fragmentation",
+        "Used by modern OS like Windows and Linux for virtual memory implementation"
+      ],
+      "examples": [
+        "A 4KB process page mapped to any available 4KB frame in physical RAM",
+        "TLB (Translation Lookaside Buffer) caches page table entries to speed up address translation"
+      ]
+    }
+  },
+  {
+    "intent": "cpu_scheduling",
+    "category": "Operating Systems",
+    "keywords": ["cpu scheduling", "scheduling algorithm", "fcfs", "round robin", "sjf", "process scheduling"],
+    "responses": {
+      "short": "CPU scheduling determines which process gets the CPU and when, maximizing CPU utilization and minimizing waiting time.",
+      "points": [
+        "FCFS (First Come First Serve): simple but can cause convoy effect",
+        "SJF (Shortest Job First): optimal average waiting time but requires knowing burst time",
+        "Round Robin: each process gets a fixed time quantum, ideal for time-sharing systems"
+      ],
+      "examples": [
+        "Round Robin with quantum=4ms: P1(10ms) → runs 4ms, then P2 runs 4ms, then P1 resumes",
+        "SJF schedules P3(2ms) before P1(8ms) since P3 has shorter burst time"
+      ]
+    }
+  },
+  {
+    "intent": "virtual_memory",
+    "category": "Operating Systems",
+    "keywords": ["virtual memory", "what is virtual memory", "demand paging", "page fault"],
+    "responses": {
+      "short": "Virtual memory is a technique that allows a computer to use more memory than physically available by using disk space as an extension of RAM.",
+      "points": [
+        "Uses demand paging — only loads pages into RAM when actually needed",
+        "Page fault occurs when a required page is not in RAM and must be fetched from disk",
+        "Swap space on disk temporarily stores inactive memory pages"
+      ],
+      "examples": [
+        "Running a 4GB game on a PC with 2GB RAM using 2GB of disk as virtual memory",
+        "Linux uses a swap partition; Windows uses pagefile.sys for virtual memory"
+      ]
+    }
+  },
+  {
+    "intent": "semaphore",
+    "category": "Operating Systems",
+    "keywords": ["semaphore", "what is semaphore", "mutex vs semaphore", "binary semaphore", "counting semaphore"],
+    "responses": {
+      "short": "A semaphore is a synchronization primitive used to control access to shared resources by multiple processes using wait (P) and signal (V) operations.",
+      "points": [
+        "Binary semaphore (0 or 1) acts like a mutex for mutual exclusion",
+        "Counting semaphore allows a fixed number of concurrent accesses (e.g., 5 connections)",
+        "wait(S): decrements S; signal(S): increments S — prevents race conditions"
+      ],
+      "examples": [
+        "Parking lot semaphore: allows 10 cars; decrements on entry, increments on exit",
+        "Producer-Consumer problem solved using semaphores to prevent buffer overflow/underflow"
+      ]
+    }
+  },
+  {
+    "intent": "file_system",
+    "category": "Operating Systems",
+    "keywords": ["file system", "what is file system", "ntfs", "fat32", "ext4"],
+    "responses": {
+      "short": "A file system organizes and manages how data is stored, accessed, and named on storage devices like SSDs and HDDs.",
+      "points": [
+        "Common file systems: NTFS (Windows), ext4 (Linux), APFS (macOS), FAT32 (USB drives)",
+        "Provides directory structure, file permissions, journaling, and metadata management",
+        "Inodes in Linux store file metadata (permissions, size, timestamps) separately from data"
+      ],
+      "examples": [
+        "NTFS supports files larger than 4GB and file-level encryption (EFS)",
+        "ext4 uses journaling to recover from crashes without full disk checks"
+      ]
+    }
+  },
+  {
+    "intent": "dbms",
+    "category": "DBMS",
+    "keywords": ["dbms", "database management system", "what is dbms", "database system"],
+    "responses": {
+      "short": "A DBMS is software that enables users to create, manage, and query databases efficiently while ensuring data integrity, security, and concurrency.",
+      "points": [
+        "Provides data abstraction at three levels: Physical, Logical, and View",
+        "Supports ACID properties (Atomicity, Consistency, Isolation, Durability) for transactions",
+        "Examples: MySQL, PostgreSQL, Oracle DB, MongoDB, SQLite"
+      ],
+      "examples": [
+        "MySQL manages an e-commerce site's product catalog, orders, and user accounts",
+        "Oracle DB handles banking transactions with ACID compliance to prevent data loss"
+      ]
+    }
+  },
+  {
+    "intent": "normalization",
+    "category": "DBMS",
+    "keywords": ["normalization", "database normalization", "1nf", "2nf", "3nf", "bcnf", "normal form"],
+    "responses": {
+      "short": "Normalization is the process of organizing a relational database to reduce redundancy and improve data integrity by applying a series of normal forms.",
+      "points": [
+        "1NF: Eliminate repeating groups — each column must have atomic values",
+        "2NF: Remove partial dependencies — non-key attributes must depend on the full primary key",
+        "3NF: Remove transitive dependencies — non-key attributes must not depend on other non-key attributes"
+      ],
+      "examples": [
+        "1NF violation: storing multiple phone numbers in one column; Fix: separate rows per number",
+        "3NF violation: ZIP code determines City; move ZIP→City to a separate table"
+      ]
+    }
+  },
+  {
+    "intent": "sql_joins",
+    "category": "DBMS",
+    "keywords": ["sql join", "inner join", "left join", "right join", "outer join", "joins in sql"],
+    "responses": {
+      "short": "SQL JOINs combine rows from two or more tables based on a related column, allowing retrieval of data spread across multiple tables.",
+      "points": [
+        "INNER JOIN: returns rows where there is a match in both tables",
+        "LEFT JOIN: returns all rows from the left table, NULLs for non-matching right rows",
+        "FULL OUTER JOIN: returns all rows from both tables, NULLs where no match exists"
+      ],
+      "examples": [
+        "SELECT * FROM Orders INNER JOIN Customers ON Orders.CustID = Customers.ID",
+        "LEFT JOIN to find all employees and their departments, including employees with no department"
+      ]
+    }
+  },
+  {
+    "intent": "acid_properties",
+    "category": "DBMS",
+    "keywords": ["acid", "acid properties", "atomicity", "consistency", "isolation", "durability", "transaction properties"],
+    "responses": {
+      "short": "ACID properties ensure reliable database transactions: Atomicity, Consistency, Isolation, and Durability — preventing data corruption in concurrent or failed operations.",
+      "points": [
+        "Atomicity: all operations in a transaction succeed or all are rolled back (all-or-nothing)",
+        "Consistency: a transaction brings the database from one valid state to another",
+        "Isolation: concurrent transactions execute as if they were serial; Durability: committed data persists even after crash"
+      ],
+      "examples": [
+        "Bank transfer: debit ₹500 and credit ₹500 must both succeed or both fail (Atomicity)",
+        "After a crash, committed transactions are recovered from the write-ahead log (Durability)"
+      ]
+    }
+  },
+  {
+    "intent": "indexing",
+    "category": "DBMS",
+    "keywords": ["indexing", "database index", "b-tree index", "what is indexing in dbms"],
+    "responses": {
+      "short": "Database indexing creates a data structure (like a B-Tree) that speeds up data retrieval operations at the cost of additional storage and slower writes.",
+      "points": [
+        "Primary Index: built on the primary key; Clustered Index: data rows sorted by index key",
+        "B-Tree index supports range queries; Hash index is ideal for equality lookups",
+        "Over-indexing slows INSERT/UPDATE/DELETE operations due to index maintenance overhead"
+      ],
+      "examples": [
+        "CREATE INDEX idx_name ON employees(last_name) — speeds up WHERE last_name = 'Sharma'",
+        "A book's back-index is an analogy — find 'recursion' quickly without reading every page"
+      ]
+    }
+  },
+  {
+    "intent": "er_model",
+    "category": "DBMS",
+    "keywords": ["er model", "entity relationship", "er diagram", "entity relationship model"],
+    "responses": {
+      "short": "The ER Model (Entity-Relationship Model) is a high-level conceptual data model used to design databases by defining entities, their attributes, and relationships.",
+      "points": [
+        "Entity: real-world object (Student, Course); Attribute: property of entity (Name, ID)",
+        "Relationships: One-to-One, One-to-Many, Many-to-Many (e.g., Student enrolls in Courses)",
+        "ER diagrams are blueprints converted to relational schemas during database design"
+      ],
+      "examples": [
+        "Hospital ER diagram: Doctor (entity) — treats — Patient (entity) with a Many-to-Many relationship",
+        "Online store: Product has attributes (Price, Name); related to Order via 'contains' relationship"
+      ]
+    }
+  },
+  {
+    "intent": "transaction",
+    "category": "DBMS",
+    "keywords": ["transaction", "database transaction", "commit rollback", "what is transaction in dbms"],
+    "responses": {
+      "short": "A database transaction is a sequence of operations treated as a single logical unit of work, ensuring data integrity through commit and rollback mechanisms.",
+      "points": [
+        "BEGIN TRANSACTION starts a unit; COMMIT saves changes permanently",
+        "ROLLBACK undoes all changes if any step fails, preserving data consistency",
+        "Savepoints allow partial rollbacks within a transaction"
+      ],
+      "examples": [
+        "Online payment: deduct balance → create order → send email — if email fails, rollback all steps",
+        "SAVEPOINT sp1 allows rollback to sp1 without cancelling the entire transaction"
+      ]
+    }
+  },
+  {
+    "intent": "osi_model",
+    "category": "Computer Networks",
+    "keywords": ["osi model", "osi layers", "7 layers", "open systems interconnection", "network layers"],
+    "responses": {
+      "short": "The OSI Model is a 7-layer conceptual framework that standardizes how different network protocols communicate, from physical transmission to application-level interaction.",
+      "points": [
+        "7 layers (bottom to top): Physical, Data Link, Network, Transport, Session, Presentation, Application",
+        "Each layer adds a header (encapsulation) when sending and strips it (decapsulation) when receiving",
+        "Transport layer (Layer 4) provides end-to-end reliability via TCP; Network layer (Layer 3) handles IP routing"
+      ],
+      "examples": [
+        "HTTP operates at Layer 7 (Application); IP at Layer 3 (Network); Ethernet at Layer 2 (Data Link)",
+        "When you send an email, SMTP (L7) → TCP (L4) → IP (L3) → Ethernet (L2) → Fiber (L1)"
+      ]
+    }
+  },
+  {
+    "intent": "tcp_vs_udp",
+    "category": "Computer Networks",
+    "keywords": ["tcp vs udp", "tcp udp", "difference tcp udp", "transmission control protocol", "user datagram protocol"],
+    "responses": {
+      "short": "TCP is a reliable, connection-oriented protocol with error checking and guaranteed delivery. UDP is connectionless and faster but does not guarantee delivery or ordering.",
+      "points": [
+        "TCP: Three-way handshake (SYN, SYN-ACK, ACK), ordered delivery, flow control — used for HTTP, FTP, email",
+        "UDP: No handshake, no retransmission, low latency — used for video streaming, DNS, VoIP, gaming",
+        "TCP has higher overhead; UDP is lightweight — choose based on reliability vs. speed needs"
+      ],
+      "examples": [
+        "Watching YouTube uses TCP (adaptive streaming) for buffered, reliable video delivery",
+        "Online multiplayer games use UDP — losing a frame is better than waiting for retransmission"
+      ]
+    }
+  },
+  {
+    "intent": "ip_addressing",
+    "category": "Computer Networks",
+    "keywords": ["ip address", "ipv4", "ipv6", "ip addressing", "subnet", "subnetting"],
+    "responses": {
+      "short": "An IP address is a unique numerical label assigned to each device in a network, used for identification and routing. IPv4 uses 32-bit addresses; IPv6 uses 128-bit addresses.",
+      "points": [
+        "IPv4: 32-bit, dotted-decimal (e.g., 192.168.1.1); supports ~4.3 billion addresses",
+        "IPv6: 128-bit, hexadecimal (e.g., 2001:db8::1); supports 3.4×10^38 addresses",
+        "Subnetting divides a network into smaller segments using subnet masks (e.g., /24 = 255.255.255.0)"
+      ],
+      "examples": [
+        "192.168.0.1/24 — network address is 192.168.0.0, broadcast is 192.168.0.255, 254 usable hosts",
+        "IPv6 auto-configuration lets devices generate their own address without a DHCP server"
+      ]
+    }
+  },
+  {
+    "intent": "dns",
+    "category": "Computer Networks",
+    "keywords": ["dns", "domain name system", "what is dns", "how dns works"],
+    "responses": {
+      "short": "DNS (Domain Name System) translates human-readable domain names (like google.com) into IP addresses (like 142.250.190.46) that computers use to route traffic.",
+      "points": [
+        "Hierarchical structure: Root → TLD (.com, .org) → Authoritative Name Server → IP",
+        "DNS query types: A (IPv4), AAAA (IPv6), MX (mail), CNAME (alias), NS (name server)",
+        "DNS caching reduces lookup time; TTL (Time to Live) controls cache duration"
+      ],
+      "examples": [
+        "Typing 'facebook.com' triggers DNS lookup: browser cache → OS cache → ISP DNS → Root DNS",
+        "CNAME record: 'www.example.com' points to 'example.com' so only one A record is needed"
+      ]
+    }
+  },
+  {
+    "intent": "http_https",
+    "category": "Computer Networks",
+    "keywords": ["http", "https", "what is http", "http vs https", "ssl tls"],
+    "responses": {
+      "short": "HTTP (HyperText Transfer Protocol) is the foundation of web communication. HTTPS adds TLS/SSL encryption, ensuring data privacy and integrity between browser and server.",
+      "points": [
+        "HTTP is stateless: each request is independent; cookies/sessions maintain state across requests",
+        "HTTPS uses TLS handshake to establish an encrypted channel before data transfer",
+        "HTTP/2 supports multiplexing (multiple requests over one connection); HTTP/3 uses QUIC over UDP"
+      ],
+      "examples": [
+        "Login forms must use HTTPS — HTTP sends passwords in plain text, visible to sniffers",
+        "HTTP 301 Moved Permanently redirects http://site.com → https://site.com automatically"
+      ]
+    }
+  },
+  {
+    "intent": "network_topologies",
+    "category": "Computer Networks",
+    "keywords": ["network topology", "bus topology", "star topology", "ring topology", "mesh topology"],
+    "responses": {
+      "short": "Network topology describes the physical or logical arrangement of nodes in a network, affecting performance, fault tolerance, and scalability.",
+      "points": [
+        "Star topology: all nodes connect to a central switch — easy to manage, single point of failure",
+        "Bus topology: all nodes share one cable — cheap but collision-prone and hard to troubleshoot",
+        "Mesh topology: every node connects to every other — highly fault-tolerant but expensive"
+      ],
+      "examples": [
+        "Home Wi-Fi routers use star topology — all devices connect to one router",
+        "The Internet uses a partial mesh topology — multiple redundant paths between major nodes"
+      ]
+    }
+  },
+  {
+    "intent": "firewall",
+    "category": "Computer Networks",
+    "keywords": ["firewall", "what is firewall", "network firewall", "packet filtering"],
+    "responses": {
+      "short": "A firewall is a network security device that monitors and controls incoming and outgoing traffic based on predefined security rules, blocking unauthorized access.",
+      "points": [
+        "Packet filtering firewall inspects IP/port headers; stateful firewall tracks connection state",
+        "Application-layer firewall (WAF) inspects HTTP content to block SQL injection, XSS attacks",
+        "Can be hardware (Cisco ASA), software (Windows Firewall), or cloud-based (AWS Security Groups)"
+      ],
+      "examples": [
+        "Rule: DENY all inbound traffic on port 23 (Telnet) — forces SSH (port 22) instead",
+        "AWS Security Group acts as a virtual firewall for EC2 instances in the cloud"
+      ]
+    }
+  },
+  {
+    "intent": "oop",
+    "category": "Programming",
+    "keywords": ["oop", "object oriented programming", "what is oop", "oops concepts"],
+    "responses": {
+      "short": "OOP (Object-Oriented Programming) is a paradigm that organizes software design around objects containing data (attributes) and behavior (methods), promoting reusability and modularity.",
+      "points": [
+        "Four pillars: Encapsulation (data hiding), Abstraction, Inheritance (code reuse), Polymorphism (many forms)",
+        "Class is a blueprint; Object is an instance — a Car class can create objects: myCar, yourCar",
+        "Promotes DRY (Don't Repeat Yourself) principle and makes large codebases maintainable"
+      ],
+      "examples": [
+        "Animal class with speak() method; Dog and Cat subclasses override speak() — polymorphism",
+        "BankAccount class encapsulates balance and exposes deposit()/withdraw() methods only"
+      ]
+    }
+  },
+  {
+    "intent": "recursion",
+    "category": "Programming",
+    "keywords": ["recursion", "what is recursion", "recursive function", "base case"],
+    "responses": {
+      "short": "Recursion is a programming technique where a function calls itself to solve smaller sub-problems until it reaches a base case that stops the recursion.",
+      "points": [
+        "Every recursive function needs a base case (termination condition) to prevent infinite loops",
+        "Call stack grows with each recursive call; deep recursion can cause stack overflow",
+        "Recursion is elegant for tree/graph traversal, divide-and-conquer (merge sort, quick sort)"
+      ],
+      "examples": [
+        "factorial(5) = 5 * factorial(4) = 5 * 4 * 3 * 2 * 1 = 120 — base case: factorial(0)=1",
+        "Fibonacci: fib(6) = fib(5) + fib(4) — tree of recursive calls (inefficient without memoization)"
+      ]
+    }
+  },
+  {
+    "intent": "sorting_algorithms",
+    "category": "Programming",
+    "keywords": ["sorting", "bubble sort", "merge sort", "quick sort", "sorting algorithm", "insertion sort"],
+    "responses": {
+      "short": "Sorting algorithms arrange data in a specific order. They differ in time complexity, space complexity, and suitability for different data sizes and structures.",
+      "points": [
+        "Bubble Sort: O(n²) — simple but slow; good for nearly sorted data only",
+        "Merge Sort: O(n log n), stable, divide-and-conquer — reliable for large datasets",
+        "Quick Sort: O(n log n) average, O(n²) worst — in-place, fastest in practice with good pivot"
+      ],
+      "examples": [
+        "Merge Sort splits [5,3,1,4] → [5,3] and [1,4] → merges to [1,3,4,5]",
+        "Quick Sort picks pivot=3 from [5,3,1,4] → [1] | 3 | [5,4] → recurse → [1,3,4,5]"
+      ]
+    }
+  },
+  {
+    "intent": "pointers",
+    "category": "Programming",
+    "keywords": ["pointer", "what is pointer", "pointers in c", "pointer arithmetic"],
+    "responses": {
+      "short": "A pointer is a variable that stores the memory address of another variable, enabling direct memory access, dynamic allocation, and efficient data structure implementation.",
+      "points": [
+        "Declaration: int *p; — p stores address of an integer; *p dereferences to get the value",
+        "Pointer arithmetic: p++ moves to next memory address (increments by sizeof(type))",
+        "Null pointer (NULL/nullptr) points to nothing — always initialize to prevent undefined behavior"
+      ],
+      "examples": [
+        "int x=10; int *p=&x; *p=20; — changes x to 20 through the pointer",
+        "Dynamic array: int *arr = malloc(5 * sizeof(int)); — allocated on heap, freed with free(arr)"
+      ]
+    }
+  },
+  {
+    "intent": "exception_handling",
+    "category": "Programming",
+    "keywords": ["exception handling", "try catch", "exception", "error handling", "throw catch"],
+    "responses": {
+      "short": "Exception handling is a mechanism to detect and respond to runtime errors (exceptions) gracefully without crashing the program, using try-catch-finally blocks.",
+      "points": [
+        "try block: code that might throw an exception; catch block: handles the exception",
+        "finally block always executes (cleanup like closing files/DB connections) regardless of exception",
+        "Custom exceptions extend Exception class to provide domain-specific error information"
+      ],
+      "examples": [
+        "try { int x = 10/0; } catch(ArithmeticException e) { System.out.println('Cannot divide by zero'); }",
+        "FileNotFoundException caught when a file path is invalid — show user-friendly message instead of crash"
+      ]
+    }
+  },
+  {
+    "intent": "data_structures_overview",
+    "category": "Data Structures",
+    "keywords": ["data structure", "what is data structure", "types of data structures", "data structures overview"],
+    "responses": {
+      "short": "A data structure is a way of organizing and storing data in memory so it can be accessed and modified efficiently. Choosing the right structure is critical for algorithm performance.",
+      "points": [
+        "Linear structures: Array, Linked List, Stack, Queue — sequential data access",
+        "Non-linear structures: Tree, Graph — hierarchical or network relationships",
+        "Hashing structures: Hash Table — O(1) average lookup using key-value pairs"
+      ],
+      "examples": [
+        "Browser history uses a Stack (LIFO) — the back button pops the last visited page",
+        "Google Maps uses a Graph data structure to represent roads and intersections"
+      ]
+    }
+  },
+  {
+    "intent": "linked_list",
+    "category": "Data Structures",
+    "keywords": ["linked list", "singly linked list", "doubly linked list", "what is linked list"],
+    "responses": {
+      "short": "A linked list is a linear data structure where elements (nodes) are connected via pointers. Each node stores data and a reference to the next node, allowing dynamic size.",
+      "points": [
+        "Singly Linked List: each node points to next; O(1) insert at head, O(n) search",
+        "Doubly Linked List: each node has next and prev pointers — bidirectional traversal",
+        "No random access (unlike arrays); insertion/deletion is O(1) if pointer is known"
+      ],
+      "examples": [
+        "Music playlist: each song node points to next song — insert/remove songs easily",
+        "Browser's forward/back navigation uses a doubly linked list of visited pages"
+      ]
+    }
+  },
+  {
+    "intent": "stack",
+    "category": "Data Structures",
+    "keywords": ["stack", "what is stack", "lifo", "stack data structure", "push pop"],
+    "responses": {
+      "short": "A stack is a linear data structure that follows LIFO (Last In First Out) — the last element pushed is the first to be popped.",
+      "points": [
+        "Operations: push (add to top), pop (remove from top), peek (view top) — all O(1)",
+        "Implemented using arrays or linked lists; function call stack is OS-managed memory stack",
+        "Used for expression evaluation, undo functionality, backtracking, DFS traversal"
+      ],
+      "examples": [
+        "Ctrl+Z (Undo) uses a stack — last action pushed is the first to be undone",
+        "Balanced parentheses check: push '(' on stack, pop when ')' encountered; empty at end = balanced"
+      ]
+    }
+  },
+  {
+    "intent": "queue",
+    "category": "Data Structures",
+    "keywords": ["queue", "what is queue", "fifo", "queue data structure", "circular queue", "priority queue"],
+    "responses": {
+      "short": "A queue is a linear data structure that follows FIFO (First In First Out) — the first element enqueued is the first to be dequeued.",
+      "points": [
+        "Operations: enqueue (add to rear), dequeue (remove from front), peek — O(1)",
+        "Circular Queue prevents wasted space in array-based queues by wrapping around",
+        "Priority Queue: elements dequeued by priority (not arrival order) — used in Dijkstra's algorithm"
+      ],
+      "examples": [
+        "Printer queue: documents printed in order they were submitted (FIFO)",
+        "CPU process scheduling with FCFS algorithm uses a queue of waiting processes"
+      ]
+    }
+  },
+  {
+    "intent": "binary_tree",
+    "category": "Data Structures",
+    "keywords": ["binary tree", "bst", "binary search tree", "tree traversal", "inorder preorder postorder"],
+    "responses": {
+      "short": "A binary tree is a hierarchical data structure where each node has at most two children (left and right). A BST adds the property that left < node < right for ordered search.",
+      "points": [
+        "BST search: O(log n) average, O(n) worst case (unbalanced/skewed tree)",
+        "Traversals: Inorder (Left-Root-Right) gives sorted output in BST; Preorder for copying trees",
+        "AVL and Red-Black trees self-balance to guarantee O(log n) height"
+      ],
+      "examples": [
+        "BST insert 5,3,7,1,4 → search for 4: start at 5→go left to 3→go right to 4 (found in 3 steps)",
+        "File system folder hierarchy is a tree — root folder contains sub-folders (child nodes)"
+      ]
+    }
+  },
+  {
+    "intent": "graph",
+    "category": "Data Structures",
+    "keywords": ["graph", "what is graph", "directed graph", "undirected graph", "bfs dfs", "adjacency list"],
+    "responses": {
+      "short": "A graph is a non-linear data structure consisting of vertices (nodes) connected by edges. Graphs model real-world networks like social connections, roads, and the Internet.",
+      "points": [
+        "Directed graph (digraph): edges have direction (A→B); Undirected: edges bidirectional (A-B)",
+        "Representations: Adjacency Matrix (O(V²) space) or Adjacency List (O(V+E) space)",
+        "BFS explores level-by-level (shortest path); DFS explores as deep as possible (cycle detection)"
+      ],
+      "examples": [
+        "Facebook friend graph: undirected — if A is friend of B, then B is friend of A",
+        "Google Maps: directed weighted graph — roads have distances; Dijkstra finds shortest route"
+      ]
+    }
+  },
+  {
+    "intent": "hashing",
+    "category": "Data Structures",
+    "keywords": ["hashing", "hash table", "hash function", "collision", "chaining", "open addressing"],
+    "responses": {
+      "short": "Hashing maps keys to fixed-size values (hash codes) for O(1) average-case insertion, deletion, and lookup in a hash table.",
+      "points": [
+        "Hash function converts a key (string, number) to an array index: h(k) = k mod m",
+        "Collision handling: Chaining (linked list at each slot) or Open Addressing (linear/quadratic probing)",
+        "Load factor = n/m (items/slots); rehashing when load factor exceeds 0.7 for performance"
+      ],
+      "examples": [
+        "Python dictionary uses hashing: {'name': 'Alice'} — 'name' is hashed to find its bucket",
+        "Password storage: SHA-256 hashes the password; same input always gives same hash"
+      ]
+    }
+  },
+  {
+    "intent": "dynamic_programming",
+    "category": "Data Structures",
+    "keywords": ["dynamic programming", "dp", "memoization", "tabulation", "what is dp"],
+    "responses": {
+      "short": "Dynamic Programming (DP) solves complex problems by breaking them into overlapping subproblems, solving each once, and storing results to avoid redundant computation.",
+      "points": [
+        "Top-down (Memoization): recursion + cache; Bottom-up (Tabulation): fill DP table iteratively",
+        "Optimal substructure: optimal solution built from optimal solutions of subproblems",
+        "Classic DP problems: Fibonacci, Knapsack, Longest Common Subsequence, Shortest Path"
+      ],
+      "examples": [
+        "Fibonacci with DP: fib(40) computed in O(n) vs O(2^n) brute force by caching fib(1..39)",
+        "0/1 Knapsack: dp[i][w] = max value using first i items with weight capacity w"
+      ]
+    }
+  },
+  {
+    "intent": "software_engineering",
+    "category": "Software Engineering",
+    "keywords": ["software engineering", "what is software engineering", "software development", "sdlc"],
+    "responses": {
+      "short": "Software Engineering is the systematic application of engineering principles to design, develop, test, and maintain software to produce reliable, scalable, and efficient systems.",
+      "points": [
+        "SDLC phases: Requirements → Design → Implementation → Testing → Deployment → Maintenance",
+        "Focuses on quality attributes: reliability, scalability, maintainability, security, performance",
+        "Uses methodologies like Agile, Scrum, Waterfall, DevOps to manage development processes"
+      ],
+      "examples": [
+        "Building an e-commerce platform requires requirement analysis, architecture design, coding, QA testing, and CI/CD deployment",
+        "Google's SRE (Site Reliability Engineering) applies software engineering practices to operations"
+      ]
+    }
+  },
+  {
+    "intent": "agile",
+    "category": "Software Engineering",
+    "keywords": ["agile", "agile methodology", "scrum", "sprint", "agile vs waterfall"],
+    "responses": {
+      "short": "Agile is an iterative software development methodology that delivers working software in short cycles (sprints), embracing change and continuous feedback.",
+      "points": [
+        "Agile Manifesto: Individuals over processes, Working software over documentation, Customer collaboration, Responding to change",
+        "Scrum: 2-week sprints, daily standups, sprint reviews, retrospectives with defined roles (PO, Scrum Master, Dev Team)",
+        "Kanban: visual workflow board with WIP limits — continuous flow instead of fixed sprints"
+      ],
+      "examples": [
+        "Spotify uses agile with Squads (small teams), Tribes, Chapters for scalable development",
+        "Sprint planning: team picks user stories from backlog, estimates story points, commits to sprint goal"
+      ]
+    }
+  },
+  {
+    "intent": "design_patterns",
+    "category": "Software Engineering",
+    "keywords": ["design pattern", "singleton", "factory pattern", "observer pattern", "mvc", "design patterns"],
+    "responses": {
+      "short": "Design patterns are reusable solutions to commonly occurring software design problems, categorized as Creational, Structural, and Behavioral patterns.",
+      "points": [
+        "Creational: Singleton (one instance), Factory (object creation without specifying class), Builder",
+        "Structural: Adapter (bridge incompatible interfaces), Decorator (add behavior dynamically), MVC",
+        "Behavioral: Observer (event subscription), Strategy (swap algorithms), Command (encapsulate requests)"
+      ],
+      "examples": [
+        "Singleton: database connection pool — only one instance shared across the application",
+        "Observer pattern: YouTube subscribers notified when a new video is uploaded (event-driven)"
+      ]
+    }
+  },
+  {
+    "intent": "testing",
+    "category": "Software Engineering",
+    "keywords": ["software testing", "unit testing", "integration testing", "tdd", "test driven development"],
+    "responses": {
+      "short": "Software testing verifies that a system behaves as expected, catching bugs early. It includes unit, integration, system, and acceptance testing across multiple levels.",
+      "points": [
+        "Unit testing: tests individual functions/modules in isolation (JUnit, pytest, Jest)",
+        "Integration testing: verifies that combined modules work together correctly",
+        "TDD (Test-Driven Development): write failing test first, then write code to pass it — Red-Green-Refactor cycle"
+      ],
+      "examples": [
+        "Unit test: assert(add(2,3) == 5) — verifies the add() function works correctly in isolation",
+        "TDD: write test for login() function → implement login() to pass the test → refactor cleanly"
+      ]
+    }
+  },
+  {
+    "intent": "version_control",
+    "category": "Software Engineering",
+    "keywords": ["version control", "git", "github", "branching", "git workflow", "merge conflict"],
+    "responses": {
+      "short": "Version control systems track changes to code over time, enabling collaboration, rollback to previous states, and parallel feature development via branching.",
+      "points": [
+        "Git: distributed VCS — every developer has full local repo history; fast operations",
+        "Branching: main/master for production, feature branches for new work, merge via PR/MR",
+        "Git Flow: feature → develop → release → hotfix → main — structured branching strategy"
+      ],
+      "examples": [
+        "git checkout -b feature/login creates a new branch; git merge feature/login integrates it",
+        "Merge conflict: two developers edited the same line — manually resolve then git add + commit"
+      ]
+    }
+  },
+  {
+    "intent": "ci_cd",
+    "category": "Software Engineering",
+    "keywords": ["ci cd", "continuous integration", "continuous deployment", "devops pipeline", "jenkins", "github actions"],
+    "responses": {
+      "short": "CI/CD (Continuous Integration/Continuous Deployment) automates building, testing, and deploying code, reducing manual effort and enabling faster, more reliable software releases.",
+      "points": [
+        "CI: every code push triggers automated build + test pipeline — catches bugs immediately",
+        "CD (Continuous Delivery): code always in deployable state; CD (Deployment): auto-deploys to production",
+        "Tools: GitHub Actions, Jenkins, GitLab CI, CircleCI, AWS CodePipeline"
+      ],
+      "examples": [
+        "GitHub Actions: on every push to main, run tests → build Docker image → deploy to AWS ECS",
+        "Netflix deploys hundreds of times per day using CI/CD pipelines with automated canary releases"
+      ]
+    }
+  },
+  {
+    "intent": "api_design",
+    "category": "Software Engineering",
+    "keywords": ["rest api", "restful api", "api design", "rest vs graphql", "http methods"],
+    "responses": {
+      "short": "REST (Representational State Transfer) is an architectural style for designing APIs using standard HTTP methods, making web services stateless, scalable, and easy to consume.",
+      "points": [
+        "HTTP methods: GET (read), POST (create), PUT (replace), PATCH (update), DELETE (remove)",
+        "RESTful constraints: stateless, uniform interface, client-server, cacheable, layered system",
+        "GraphQL alternative: single endpoint, client specifies exact data shape — reduces over/under-fetching"
+      ],
+      "examples": [
+        "GET /api/users/42 returns user with ID 42; POST /api/users creates a new user",
+        "Twitter API: GET /tweets/{id} fetches a tweet; DELETE /tweets/{id} removes it"
+      ]
+    }
+  },
+  {
+    "intent": "time_complexity",
+    "category": "Data Structures",
+    "keywords": ["time complexity", "big o notation", "big o", "space complexity", "o(n)", "o(log n)"],
+    "responses": {
+      "short": "Time complexity describes how an algorithm's runtime scales with input size, expressed using Big-O notation. It helps compare algorithm efficiency independently of hardware.",
+      "points": [
+        "O(1) constant, O(log n) logarithmic, O(n) linear, O(n log n) linearithmic, O(n²) quadratic",
+        "Best case (Ω), worst case (O), and average case (Θ) notations describe different scenarios",
+        "Space complexity measures auxiliary memory used — trade-off between time and space often exists"
+      ],
+      "examples": [
+        "Array lookup by index: O(1); Linear search: O(n); Binary search: O(log n)",
+        "Bubble sort is O(n²) — for n=1000, needs ~1 million comparisons vs merge sort's ~10,000"
+      ]
+    }
+  }
+]

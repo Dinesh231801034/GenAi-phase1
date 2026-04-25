@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FAQ Support Chatbot — instant answers on OS, DBMS, Networking, Programming, Data Structures & Software Engineering." />
+  <title>FAQ Assistant | CS Knowledge Bot</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ── Sidebar ── -->
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo">🤖</span>
+      <span class="sidebar-title">FAQ Assistant</span>
+    </div>
+
+    <button id="new-chat-btn">
+      ✏️ New Chat
+    </button>
+
+    <ul id="chat-list"></ul>
+
+    <div class="sidebar-footer">
+      <span class="sidebar-footer-text">Local · No API · 60+ Topics</span>
+      <button id="theme-toggle" title="Toggle Theme">🌙</button>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <main id="main">
+
+    <header id="header">
+      <button id="sidebar-toggle" aria-label="Toggle Sidebar">☰</button>
+      <h1 id="chat-title">FAQ Assistant</h1>
+      <span class="header-badge">Rule-Based AI</span>
+    </header>
+
+    <div id="messages"></div>
+
+    <!-- Typing indicator lives outside #messages so it's always visible -->
+    <div id="typing-indicator">
+      <div class="avatar">🤖</div>
+      <div class="typing-bubble">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div id="input-area">
+      <div class="input-wrapper">
+        <textarea
+          id="user-input"
+          rows="1"
+          placeholder="Ask about OS, DBMS, Networks, Programming…"
+          autocomplete="off"
+          spellcheck="true"
+        ></textarea>
+        <button id="send-btn" aria-label="Send message">➤</button>
+      </div>
+      <p class="input-hint">Press <kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line</p>
+    </div>
+
+  </main>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
